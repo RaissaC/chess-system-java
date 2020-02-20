@@ -23,7 +23,9 @@ public class ChessPosition {
 		return row;
 	}
 
-	protected Position toPosition() {
+	//matrix_row == 8 - chessRow
+	//matrix_column == chessColumn - 'a'
+		protected Position toPosition() {
 		return new Position(8 - row, column - 'a');
 	}
 	

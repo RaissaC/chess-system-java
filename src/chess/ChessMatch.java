@@ -30,6 +30,7 @@ public class ChessMatch {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
 
+		validadeTargetPosition(source, target);
 		validateSourcePosition(source);
 
 		Piece capturedPiece = makeMove(source, target);
@@ -42,10 +43,16 @@ public class ChessMatch {
 		board.pleasePiece(p, target);
 		return capturedPiece;
 	}
-	
+
 	private void validateSourcePosition(Position position) {
 		if (!(board.thereIsAPiece(position))) {
 			throw new ChessExcepition("There is no piece source position.");
+		}
+	}
+
+	private void validadeTargetPosition(Position source, Position target) {
+		if(!board.piece(source).possibleMove(target)){
+			throw new ChessExcepition("The cosen piece can't move to target position");
 		}
 	}
 
@@ -59,6 +66,6 @@ public class ChessMatch {
 		placeNewPiece('a', 1, new Rook(board, Color.WHITE));
 		placeNewPiece('g', 3, new King(board, Color.BLACK));
 		placeNewPiece('d', 4, new Rook(board, Color.WHITE));
-		
+
 	}
 }
