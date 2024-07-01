@@ -28,7 +28,6 @@ public class ChessMatch {
 
     public boolean[][] possibleMovie(ChessPosition sourcePosition){
         Position position = sourcePosition.toPosition();
-
         validateSourcePosition(position);
         return board.piece(position).possibleMoves();
     }
